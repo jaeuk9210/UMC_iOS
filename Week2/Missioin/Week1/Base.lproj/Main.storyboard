@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pCB-Aw-MOg">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="BMHANNAProOTF.otf">
+            <string>BMHANNAProOTF</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="MUa-fy-gm2">
+            <objects>
+                <tabBarController id="pCB-Aw-MOg" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Li-lg-zWi">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="ftH-UY-7DM" kind="relationship" relationship="viewControllers" id="pJ8-aJ-kaI"/>
+                        <segue destination="y7i-ey-aSk" kind="relationship" relationship="viewControllers" id="JWz-FW-7OW"/>
+                        <segue destination="Khb-XT-YUg" kind="relationship" relationship="viewControllers" id="4Pa-xN-bLG"/>
+                        <segue destination="jVQ-mI-84R" kind="relationship" relationship="viewControllers" id="FlS-pd-Am1"/>
+                        <segue destination="2Md-Dd-KnT" kind="relationship" relationship="viewControllers" id="Erw-xT-TV4"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nff-Dv-SfT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="198" y="-432"/>
+        </scene>
+        <!--검색-->
+        <scene sceneID="4pD-36-30P">
+            <objects>
+                <viewController title="검색" id="ftH-UY-7DM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ssk-X9-q03">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ofd-zp-2EJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="Uwy-Pc-Hrn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XXU-Rz-DQm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1265" y="392"/>
+        </scene>
+        <!--찜-->
+        <scene sceneID="Hn7-jS-zQT">
+            <objects>
+                <viewController title="찜" id="y7i-ey-aSk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kLu-mj-0AK">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PkU-xa-g9a"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="찜" image="heart" catalog="system" id="1IZ-eK-CfP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dk9-zw-fk6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-534" y="392"/>
+        </scene>
+        <!--홈-->
+        <scene sceneID="39V-sz-q7O">
+            <objects>
+                <viewController title="홈" id="Wyc-c1-06I" customClass="HomeViewController" customModule="Week1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2A0-i6-02h">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1500"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGD-OP-mCK">
+                                <rect key="frame" x="0.0" y="103" width="393" height="1397"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ref-oo-aha" userLabel="Container View">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1500"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMp-u8-4H1">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="68"/>
+                                                <subviews>
+                                                    <searchBar contentMode="redraw" searchBarStyle="prominent" text="" placeholder="배고프니까 일단 검색!!" translatesAutoresizingMaskIntoConstraints="NO" id="iJB-Qi-7tf">
+                                                        <rect key="frame" x="10" y="0.0" width="373" height="56"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <scopeButtonTitles>
+                                                            <string>Title</string>
+                                                            <string>Title</string>
+                                                        </scopeButtonTitles>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="Wyc-c1-06I" id="oth-hD-5M6"/>
+                                                        </connections>
+                                                    </searchBar>
+                                                </subviews>
+                                                <color key="backgroundColor" name="AccentColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="iJB-Qi-7tf" secondAttribute="trailing" constant="10" id="6yW-wO-HRq"/>
+                                                    <constraint firstItem="iJB-Qi-7tf" firstAttribute="leading" secondItem="jMp-u8-4H1" secondAttribute="leading" constant="10" id="DTj-Eo-VIc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="iJB-Qi-7tf" secondAttribute="bottom" constant="12" id="JZy-pn-ePd"/>
+                                                    <constraint firstItem="iJB-Qi-7tf" firstAttribute="top" secondItem="jMp-u8-4H1" secondAttribute="top" id="VXt-Cg-npU"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qhy-Cx-Jli">
+                                                <rect key="frame" x="12" y="80" width="369" height="117.66666666666669"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Th8-5y-bzl" customClass="UIMiddleButton" customModule="Week1" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="117.66666666666667"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Th8-5y-bzl" secondAttribute="height" multiplier="1:1" id="bT3-k8-2DI"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="backImg" value="Btn"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonTitleText" value="배달"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRf-cX-OKc" customClass="UIMiddleButton" customModule="Week1" customModuleProvider="target">
+                                                        <rect key="frame" x="125.66666666666666" y="0.0" width="117.66666666666666" height="117.66666666666667"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="eRf-cX-OKc" secondAttribute="height" multiplier="1:1" id="3n8-ke-o9Q"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="backImg" value="Btn"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSQ-vs-lc1" customClass="UIMiddleButton" customModule="Week1" customModuleProvider="target">
+                                                        <rect key="frame" x="251.33333333333329" y="0.0" width="117.66666666666666" height="117.66666666666667"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="NSQ-vs-lc1" secondAttribute="height" multiplier="1:1" id="2Kr-QH-egF"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="backImg" value="Btn"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="eRf-cX-OKc" firstAttribute="width" secondItem="eRf-cX-OKc" secondAttribute="height" multiplier="1:1" id="Y1e-99-55g"/>
+                                                    <constraint firstItem="NSQ-vs-lc1" firstAttribute="width" secondItem="NSQ-vs-lc1" secondAttribute="height" multiplier="1:1" id="yp3-ns-Q5W"/>
+                                                </constraints>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ng-Ix-agX" customClass="UICardView" customModule="Week1" customModuleProvider="target">
+                                                <rect key="frame" x="12" y="205.66666666666669" width="369" height="219.33333333333331"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알뜰·한집배달" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFv-HV-Nt2">
+                                                        <rect key="frame" x="10" y="12" width="108" height="22"/>
+                                                        <fontDescription key="fontDescription" name="BMHANNAProOTF" family="BM HANNA Pro OTF" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배민1 원하는 대로 골라 주문!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zye-5x-rP7">
+                                                        <rect key="frame" x="123" y="15.333333333333314" width="148" height="15.666666666666664"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpH-sW-rtY">
+                                                        <rect key="frame" x="337" y="12" width="22" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="QpH-sW-rtY" secondAttribute="height" multiplier="1:1" id="F4f-2m-nv9"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="chevron.right" catalog="system"/>
+                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="HgX-rW-5K3">
+                                                        <rect key="frame" x="10" y="44.000000000000007" width="349" height="74.666666666666686"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJd-3p-mfT" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="55.333333333333336" height="74.666666666666671"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="BaeminKitchin"/>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="배민키친"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Im-1u-RD6" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
+                                                                <rect key="frame" x="73.333333333333329" y="0.0" width="55.333333333333329" height="74.666666666666671"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="Cafe"/>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="디저트"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgq-3z-mBw" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
+                                                                <rect key="frame" x="146.66666666666666" y="0.0" width="55.666666666666657" height="74.666666666666671"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="Chinese"/>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="중식"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvu-jR-CFq" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
+                                                                <rect key="frame" x="220.33333333333334" y="0.0" width="55.333333333333343" height="74.666666666666671"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="Pizza"/>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="피자"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q81-IQ-YKM" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
+                                                                <rect key="frame" x="293.66666666666669" y="0.0" width="55.333333333333314" height="74.666666666666671"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="Sushi"/>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="돈까스·회"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Cgq-3z-mBw" firstAttribute="width" secondItem="kJd-3p-mfT" secondAttribute="width" id="CAV-ni-Qa8"/>
+                                                            <constraint firstItem="zvu-jR-CFq" firstAttribute="width" secondItem="kJd-3p-mfT" secondAttribute="width" id="IPm-sT-E7n"/>
+                                                            <constraint firstItem="q81-IQ-YKM" firstAttribute="width" secondItem="kJd-3p-mfT" secondAttribute="width" id="YgZ-dc-C75"/>
+                                                            <constraint firstItem="4Im-1u-RD6" firstAttribute="width" secondItem="kJd-3p-mfT" secondAttribute="width" id="YsY-b2-tYP"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="u4l-Fh-Xbz">
+                                                        <rect key="frame" x="10" y="132.66666666666663" width="349" height="74.666666666666686"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5J-tg-eQg" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="55.333333333333336" height="74.666666666666671"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="Hamburger"/>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="버거"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awp-wE-XMd" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
+                                                                <rect key="frame" x="73.333333333333329" y="0.0" width="55.333333333333329" height="74.666666666666671"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="LunchBox"/>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="도시락"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65m-Qv-K8X" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
+                                                                <rect key="frame" x="146.66666666666666" y="0.0" width="55.666666666666657" height="74.666666666666671"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="Rice"/>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="백반"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ua-ac-iir" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
+                                                                <rect key="frame" x="220.33333333333334" y="0.0" width="55.333333333333343" height="74.666666666666671"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="Snack"/>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="분식"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CsK-IA-kNc" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
+                                                                <rect key="frame" x="293.66666666666669" y="0.0" width="55.333333333333314" height="74.666666666666671"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="labelSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="buttonImage" value="Soup"/>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="국·찌개"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="awp-wE-XMd" firstAttribute="width" secondItem="X5J-tg-eQg" secondAttribute="width" id="CzG-U6-Dw5"/>
+                                                            <constraint firstItem="6ua-ac-iir" firstAttribute="width" secondItem="X5J-tg-eQg" secondAttribute="width" id="L2t-bW-oda"/>
+                                                            <constraint firstItem="CsK-IA-kNc" firstAttribute="width" secondItem="X5J-tg-eQg" secondAttribute="width" id="QBw-XT-ebu"/>
+                                                            <constraint firstItem="65m-Qv-K8X" firstAttribute="width" secondItem="X5J-tg-eQg" secondAttribute="width" id="ul8-bR-Ez7"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="u4l-Fh-Xbz" firstAttribute="top" secondItem="HgX-rW-5K3" secondAttribute="bottom" constant="14" id="3fu-hJ-RuO"/>
+                                                    <constraint firstItem="BFv-HV-Nt2" firstAttribute="leading" secondItem="6ng-Ix-agX" secondAttribute="leading" constant="10" id="4ej-MR-D28"/>
+                                                    <constraint firstItem="QpH-sW-rtY" firstAttribute="height" secondItem="BFv-HV-Nt2" secondAttribute="height" id="4f1-ZN-602"/>
+                                                    <constraint firstAttribute="trailing" secondItem="HgX-rW-5K3" secondAttribute="trailing" constant="10" id="CiY-b3-TCp"/>
+                                                    <constraint firstItem="HgX-rW-5K3" firstAttribute="top" secondItem="BFv-HV-Nt2" secondAttribute="bottom" constant="10" id="HJ5-uR-vNd"/>
+                                                    <constraint firstItem="Zye-5x-rP7" firstAttribute="centerY" secondItem="BFv-HV-Nt2" secondAttribute="centerY" id="LdS-xm-1N0"/>
+                                                    <constraint firstAttribute="trailing" secondItem="QpH-sW-rtY" secondAttribute="trailing" constant="10" id="QHO-cc-bVD"/>
+                                                    <constraint firstItem="QpH-sW-rtY" firstAttribute="top" secondItem="6ng-Ix-agX" secondAttribute="top" constant="12" id="U9G-2W-hoV"/>
+                                                    <constraint firstItem="u4l-Fh-Xbz" firstAttribute="leading" secondItem="6ng-Ix-agX" secondAttribute="leading" constant="10" id="UHb-Q0-y3t"/>
+                                                    <constraint firstItem="BFv-HV-Nt2" firstAttribute="top" secondItem="6ng-Ix-agX" secondAttribute="top" constant="12" id="WKz-KY-pwl"/>
+                                                    <constraint firstAttribute="trailing" secondItem="u4l-Fh-Xbz" secondAttribute="trailing" constant="10" id="mh1-Qc-9xp"/>
+                                                    <constraint firstItem="Zye-5x-rP7" firstAttribute="leading" secondItem="BFv-HV-Nt2" secondAttribute="trailing" constant="5" id="rqd-J2-7yS"/>
+                                                    <constraint firstAttribute="bottom" secondItem="u4l-Fh-Xbz" secondAttribute="bottom" constant="12" id="t56-cD-6RT"/>
+                                                    <constraint firstItem="HgX-rW-5K3" firstAttribute="leading" secondItem="6ng-Ix-agX" secondAttribute="leading" constant="10" id="tO8-lf-E7h"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="0.10000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                        <size key="value" width="0.0" height="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AD" translatesAutoresizingMaskIntoConstraints="NO" id="1LA-JC-inF">
+                                                <rect key="frame" x="12" y="433" width="369" height="123"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="1LA-JC-inF" secondAttribute="height" multiplier="720:240" id="xVN-D1-8uX"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="Background"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1500" id="0hu-K4-EiJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="jMp-u8-4H1" secondAttribute="trailing" id="0jd-NM-crM"/>
+                                            <constraint firstItem="6ng-Ix-agX" firstAttribute="leading" secondItem="ref-oo-aha" secondAttribute="leading" constant="12" id="6Gf-We-MVH"/>
+                                            <constraint firstAttribute="trailing" secondItem="1LA-JC-inF" secondAttribute="trailing" constant="12" id="F4v-QR-iVX"/>
+                                            <constraint firstItem="6ng-Ix-agX" firstAttribute="top" secondItem="Qhy-Cx-Jli" secondAttribute="bottom" constant="8" id="Gbd-cf-zdP"/>
+                                            <constraint firstAttribute="trailing" secondItem="6ng-Ix-agX" secondAttribute="trailing" constant="12" id="WmD-ro-vmq"/>
+                                            <constraint firstItem="jMp-u8-4H1" firstAttribute="top" secondItem="ref-oo-aha" secondAttribute="top" id="X9s-qA-D4e"/>
+                                            <constraint firstItem="Qhy-Cx-Jli" firstAttribute="leading" secondItem="ref-oo-aha" secondAttribute="leading" constant="12" id="aev-9r-rSP"/>
+                                            <constraint firstItem="jMp-u8-4H1" firstAttribute="leading" secondItem="ref-oo-aha" secondAttribute="leading" id="cEG-dv-lg5"/>
+                                            <constraint firstItem="1LA-JC-inF" firstAttribute="top" secondItem="6ng-Ix-agX" secondAttribute="bottom" constant="8" id="eOp-xb-4zb"/>
+                                            <constraint firstItem="Qhy-Cx-Jli" firstAttribute="top" secondItem="jMp-u8-4H1" secondAttribute="bottom" constant="12" id="lDO-dS-scW"/>
+                                            <constraint firstAttribute="trailing" secondItem="Qhy-Cx-Jli" secondAttribute="trailing" constant="12" id="qJJ-O0-FJL"/>
+                                            <constraint firstItem="1LA-JC-inF" firstAttribute="leading" secondItem="ref-oo-aha" secondAttribute="leading" constant="12" id="zWO-bD-OQu"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ref-oo-aha" firstAttribute="trailing" secondItem="PoU-cq-30V" secondAttribute="trailing" constant="393" id="4tm-ub-B0I"/>
+                                    <constraint firstItem="ref-oo-aha" firstAttribute="leading" secondItem="PoU-cq-30V" secondAttribute="leading" id="DcQ-Zb-Vna"/>
+                                    <constraint firstItem="ref-oo-aha" firstAttribute="top" secondItem="PoU-cq-30V" secondAttribute="top" id="MHo-r7-1pu"/>
+                                    <constraint firstItem="ref-oo-aha" firstAttribute="width" secondItem="9JM-lW-YSo" secondAttribute="width" id="eBe-9S-L3q"/>
+                                    <constraint firstItem="ref-oo-aha" firstAttribute="bottom" secondItem="AGD-OP-mCK" secondAttribute="bottom" id="n0r-iN-xzr"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="PoU-cq-30V"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="9JM-lW-YSo"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kPL-yK-ciE"/>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstItem="AGD-OP-mCK" firstAttribute="top" secondItem="kPL-yK-ciE" secondAttribute="top" id="3Mj-N8-ECl"/>
+                            <constraint firstItem="AGD-OP-mCK" firstAttribute="leading" secondItem="kPL-yK-ciE" secondAttribute="leading" id="Pis-gV-lLz"/>
+                            <constraint firstItem="AGD-OP-mCK" firstAttribute="trailing" secondItem="kPL-yK-ciE" secondAttribute="trailing" id="f0V-1L-gHj"/>
+                            <constraint firstItem="AGD-OP-mCK" firstAttribute="bottom" secondItem="2A0-i6-02h" secondAttribute="bottom" id="stu-Di-IOW"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="배민" image="house" catalog="system" id="k08-d1-enn"/>
+                    <navigationItem key="navigationItem" id="uiy-Zv-yqo">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="cart" catalog="system" id="m8P-yC-cjh">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="bell" catalog="system" id="RPg-xZ-oWA">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                            <barButtonItem image="square.split.2x2" catalog="system" id="dcp-R0-IQY">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <size key="freeformSize" width="393" height="1500"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iw6-Gu-HHg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="198" y="1931"/>
+        </scene>
+        <!--주문내역-->
+        <scene sceneID="UFw-rj-i9F">
+            <objects>
+                <viewController title="주문내역" id="jVQ-mI-84R" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SIv-xV-NL2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="YS9-qT-SbW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="주문내역" image="newspaper" catalog="system" id="OBk-kZ-s0L"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OEb-dn-jHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="909" y="392"/>
+        </scene>
+        <!--my배민-->
+        <scene sceneID="xHK-FJ-DN4">
+            <objects>
+                <viewController title="my배민" id="2Md-Dd-KnT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="By8-rF-vHs">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="yJW-au-ORn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="my배민" image="face.smiling" catalog="system" id="79M-Jd-l1g"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gy1-L0-hUD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1596" y="392"/>
+        </scene>
+        <!--배민-->
+        <scene sceneID="GEJ-XN-JT8">
+            <objects>
+                <navigationController title="배민" id="Khb-XT-YUg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="배민" image="house" catalog="system" id="AaC-cG-fdG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcI-Mq-ksZ">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" name="AccentColor"/>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Wyc-c1-06I" kind="relationship" relationship="rootViewController" id="6Ck-aM-48d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vtf-FD-VAq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="198" y="392"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="4Im-1u-RD6">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="65m-Qv-K8X">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="6ua-ac-iir">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="Cgq-3z-mBw">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="CsK-IA-kNc">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="NSQ-vs-lc1">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="Th8-5y-bzl">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="X5J-tg-eQg">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="awp-wE-XMd">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="eRf-cX-OKc">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="kJd-3p-mfT">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="q81-IQ-YKM">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+        <designable name="zvu-jR-CFq">
+            <size key="intrinsicContentSize" width="24" height="14"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="AD" width="720" height="240"/>
+        <image name="BaeminKitchin" width="368" height="368"/>
+        <image name="Btn" width="586" height="587"/>
+        <image name="Cafe" width="368" height="368"/>
+        <image name="Chinese" width="368" height="368"/>
+        <image name="Hamburger" width="368" height="368"/>
+        <image name="LunchBox" width="368" height="368"/>
+        <image name="Pizza" width="368" height="368"/>
+        <image name="Rice" width="368" height="368"/>
+        <image name="Snack" width="368" height="368"/>
+        <image name="Soup" width="368" height="368"/>
+        <image name="Sushi" width="368" height="368"/>
+        <image name="bell" catalog="system" width="125" height="128"/>
+        <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="face.smiling" catalog="system" width="128" height="123"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="newspaper" catalog="system" width="128" height="111"/>
+        <image name="square.split.2x2" catalog="system" width="128" height="114"/>
+        <namedColor name="AccentColor">
+            <color red="0.37099999189376831" green="0.74500000476837158" blue="0.73299998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Background">
+            <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
