@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pCB-Aw-MOg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pCB-Aw-MOg">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -76,11 +77,11 @@
             <objects>
                 <viewController title="홈" id="Wyc-c1-06I" customClass="HomeViewController" customModule="Week1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2A0-i6-02h">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGD-OP-mCK">
-                                <rect key="frame" x="0.0" y="103" width="393" height="1397"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ref-oo-aha" userLabel="Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1500"/>
@@ -109,10 +110,9 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qhy-Cx-Jli">
-                                                <rect key="frame" x="12" y="80" width="369" height="117.66666666666669"/>
+                                                <rect key="frame" x="12" y="80" width="16" height="0.0"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Th8-5y-bzl" customClass="UIMiddleButton" customModule="Week1" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="117.66666666666667"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Th8-5y-bzl" secondAttribute="height" multiplier="1:1" id="bT3-k8-2DI"/>
@@ -125,22 +125,25 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRf-cX-OKc" customClass="UIMiddleButton" customModule="Week1" customModuleProvider="target">
-                                                        <rect key="frame" x="125.66666666666666" y="0.0" width="117.66666666666666" height="117.66666666666667"/>
+                                                        <rect key="frame" x="8" y="0.0" width="0.0" height="0.0"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="eRf-cX-OKc" secondAttribute="height" multiplier="1:1" id="3n8-ke-o9Q"/>
+                                                            <constraint firstAttribute="width" secondItem="eRf-cX-OKc" secondAttribute="height" multiplier="1:1" id="Y1e-99-55g"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="backImg" value="Btn"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonTitleText" value="한집배달"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSQ-vs-lc1" customClass="UIMiddleButton" customModule="Week1" customModuleProvider="target">
-                                                        <rect key="frame" x="251.33333333333329" y="0.0" width="117.66666666666666" height="117.66666666666667"/>
+                                                        <rect key="frame" x="16" y="0.0" width="0.0" height="0.0"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="NSQ-vs-lc1" secondAttribute="height" multiplier="1:1" id="2Kr-QH-egF"/>
+                                                            <constraint firstAttribute="width" secondItem="NSQ-vs-lc1" secondAttribute="height" multiplier="1:1" id="yp3-ns-Q5W"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain"/>
@@ -149,13 +152,9 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="eRf-cX-OKc" firstAttribute="width" secondItem="eRf-cX-OKc" secondAttribute="height" multiplier="1:1" id="Y1e-99-55g"/>
-                                                    <constraint firstItem="NSQ-vs-lc1" firstAttribute="width" secondItem="NSQ-vs-lc1" secondAttribute="height" multiplier="1:1" id="yp3-ns-Q5W"/>
-                                                </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ng-Ix-agX" customClass="UICardView" customModule="Week1" customModuleProvider="target">
-                                                <rect key="frame" x="12" y="205.66666666666669" width="369" height="219.33333333333331"/>
+                                                <rect key="frame" x="12" y="88.000000000000014" width="369" height="219.33333333333337"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알뜰·한집배달" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFv-HV-Nt2">
                                                         <rect key="frame" x="10" y="12" width="108" height="22"/>
@@ -164,7 +163,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배민1 원하는 대로 골라 주문!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zye-5x-rP7">
-                                                        <rect key="frame" x="123" y="15.333333333333314" width="148" height="15.666666666666664"/>
+                                                        <rect key="frame" x="123" y="15.333333333333343" width="148" height="15.666666666666664"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -250,7 +249,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="u4l-Fh-Xbz">
-                                                        <rect key="frame" x="10" y="132.66666666666663" width="349" height="74.666666666666686"/>
+                                                        <rect key="frame" x="10" y="132.66666666666669" width="349" height="74.666666666666686"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5J-tg-eQg" customClass="UIBottomLabelButton" customModule="Week1" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="55.333333333333336" height="74.666666666666671"/>
@@ -357,7 +356,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AD" translatesAutoresizingMaskIntoConstraints="NO" id="1LA-JC-inF">
-                                                <rect key="frame" x="12" y="433" width="369" height="123"/>
+                                                <rect key="frame" x="12" y="315.33333333333331" width="369" height="123"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="1LA-JC-inF" secondAttribute="height" multiplier="720:240" id="xVN-D1-8uX"/>
                                                 </constraints>
@@ -415,7 +414,6 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <size key="freeformSize" width="393" height="1500"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iw6-Gu-HHg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

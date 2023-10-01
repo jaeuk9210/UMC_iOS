@@ -11,7 +11,7 @@ import UIKit
     private let stackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.alignment = .center
+        view.alignment = .top
         view.distribution = .fill
         view.spacing = 0
         view.isUserInteractionEnabled = false
@@ -89,6 +89,7 @@ import UIKit
     }
     
     private func setUp() {
+        addSubview(backgroundImg)
         addSubview(stackView)
         self.layer.cornerRadius = 6
         self.layer.shadowOpacity = 0.1
@@ -97,13 +98,18 @@ import UIKit
         self.layer.shadowRadius = 1
         self.layer.backgroundColor = UIColor.white.cgColor
         
-        [btnTitleLabel, btnSubTitleLabel, backgroundImg].forEach(stackView.addArrangedSubview(_:))
-
+        [btnTitleLabel, btnSubTitleLabel].forEach(stackView.addArrangedSubview(_:))
+        
         NSLayoutConstraint.activate([
             stackView.leftAnchor.constraint(equalTo: leftAnchor),
             stackView.rightAnchor.constraint(equalTo: rightAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             stackView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundImg.leftAnchor.constraint(equalTo: leftAnchor),
+            backgroundImg.rightAnchor.constraint(equalTo: rightAnchor),
+            backgroundImg.bottomAnchor.constraint(equalTo: bottomAnchor),
+            backgroundImg.topAnchor.constraint(equalTo: topAnchor),
+            
         ])
     }
 }
