@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Post {
     let title: String
@@ -19,6 +20,7 @@ struct Post {
     let isReservation: Bool
     let isDone: Bool
     let isShare: Bool
+    var image: UIImage?
 }
 
 let data: [Post] = [
@@ -32,7 +34,8 @@ let data: [Post] = [
          rePost: true,
          isReservation: false,
          isDone: true,
-         isShare: true
+         isShare: true,
+         image: nil
         ),
     Post(title: "스위치게임팩2개팝니다",
          imageURL: "https://source.unsplash.com/random/150x150",
@@ -44,7 +47,8 @@ let data: [Post] = [
          rePost: false,
          isReservation: false,
          isDone: false,
-         isShare: false
+         isShare: false,
+         image: nil
         ),
     Post(title: "(L)스톤아일랜드 정품 맨투맨 !! 상태최강",
          imageURL: "https://source.unsplash.com/random/150x150",
@@ -56,7 +60,8 @@ let data: [Post] = [
          rePost: false,
          isReservation: true,
          isDone: false,
-         isShare: false
+         isShare: false,
+         image: nil
         ),
     Post(title: "폴드5 톰브라운에디션 판매",
          imageURL: "https://source.unsplash.com/random/150x150",
@@ -68,7 +73,8 @@ let data: [Post] = [
          rePost: true,
          isReservation: false,
          isDone: true,
-         isShare: false
+         isShare: false,
+         image: nil
         ),
     Post(title: "beats studio buds",
          imageURL: "https://source.unsplash.com/random/150x150",
@@ -80,7 +86,8 @@ let data: [Post] = [
          rePost: false,
          isReservation: false,
          isDone: false,
-         isShare: false
+         isShare: false,
+         image: nil
         ),
     Post(title: "닌텐도스위치 스포츠 칩(전구성 일체)",
          imageURL: "https://source.unsplash.com/random/150x150",
@@ -92,7 +99,8 @@ let data: [Post] = [
          rePost: false,
          isReservation: false,
          isDone: false,
-         isShare: false
+         isShare: false,
+         image: nil
         ),
     Post(title: "아이맥",
          imageURL: "https://source.unsplash.com/random/150x150",
@@ -104,6 +112,7 @@ let data: [Post] = [
          rePost: false,
          isReservation: false,
          isDone: false,
-         isShare: false
+         isShare: false,
+         image: nil
         ),
 ]

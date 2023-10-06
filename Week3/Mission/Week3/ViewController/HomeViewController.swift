@@ -64,6 +64,7 @@ class HomeViewController: UIViewController {
         
         navigationItem.rightBarButtonItems = [notiBtn, searchBtn, menuBtn]
     }
+
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -80,7 +81,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
         
-        cell.postImageView.load(url: URL(string:data[indexPath.row].imageURL)!)
+        cell.postImageView.imageDownload(url: URL(string:data[indexPath.row].imageURL)!, key: String(indexPath.row))
+
         cell.titleLabel.text = post.title
         cell.locationAndTimeLabel.text = post.location + split + repost + calcTimeDiff(date: post.time)
         
@@ -121,15 +123,43 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension UIImageView {
-   func load(url: URL) {
-      DispatchQueue.global().async { [weak self] in
-         if let data = try? Data(contentsOf: url) {
-            if let image = UIImage(data: data) {
-              DispatchQueue.main.async {
-                self?.image = image
-              }
+    func imageDownload(url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit, key: String) {
+        if let cacheImage = Cache.imageCache.object(forKey: key as NSString) {
+            DispatchQueue.main.async() { [weak self] in
+                self?.contentMode = mode
+                self?.image = cacheImage
             }
-         }
-      }
-   }
+        }
+        else {
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                guard
+                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                    let data = data, error == nil,
+                    let image = UIImage(data: data)
+                    else {
+                        print("Download image fail : \(url)")
+                        return
+                }
+
+                DispatchQueue.main.async() { [weak self] in
+                    print("Download image success \(url)")
+                    print(key)
+
+                    Cache.imageCache.setObject(image, forKey: key as NSString)
+
+                    self?.contentMode = mode
+                    self?.image = image
+                }
+            }.resume()
+        }
+    }
+}
+
+
+class Cache {
+    static let imageCache = NSCache<NSString, UIImage>()
 }
