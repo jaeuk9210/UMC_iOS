@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g8j-1b-3A5">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile-->
+        <scene sceneID="PjF-2j-cF2">
+            <objects>
+                <viewController id="9sE-2L-W5t" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wKl-ME-es7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOh-LY-3kT">
+                                <rect key="frame" x="151" y="408" width="91" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="efA-fi-fDd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sOh-LY-3kT" firstAttribute="centerX" secondItem="wKl-ME-es7" secondAttribute="centerX" id="ZZC-tw-oQ9"/>
+                            <constraint firstItem="sOh-LY-3kT" firstAttribute="centerY" secondItem="wKl-ME-es7" secondAttribute="centerY" id="eXy-FY-r6u"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person.fill" id="2dD-8T-Qsw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O1d-Gk-ZEf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="123" y="444"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="doZ-Ci-SvR">
+            <objects>
+                <viewController id="iM3-Ta-Pbm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vh5-21-kqT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIv-SD-MCH">
+                                <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_catstagram_logo" translatesAutoresizingMaskIntoConstraints="NO" id="s6L-AD-yBt">
+                                        <rect key="frame" x="15" y="5" width="140" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="C6q-1z-scC"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgf-RZ-lgH">
+                                        <rect key="frame" x="353" y="12.666666666666671" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="NXT-zt-lm8"/>
+                                            <constraint firstAttribute="width" constant="25" id="crQ-Er-V4k"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="ic_home_send"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okl-n9-Fq2">
+                                        <rect key="frame" x="311" y="11.666666666666671" width="27" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="27" id="ATX-ae-PA3"/>
+                                            <constraint firstAttribute="height" constant="27" id="B1f-pn-GYj"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="ic_home_heart"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geY-Ir-Qc3">
+                                        <rect key="frame" x="271" y="12.666666666666671" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="3lG-9l-xzJ"/>
+                                            <constraint firstAttribute="height" constant="25" id="mNH-lQ-d1L"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="ic_home_upload"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="zgf-RZ-lgH" firstAttribute="leading" secondItem="Okl-n9-Fq2" secondAttribute="trailing" constant="15" id="0aX-6d-tRr"/>
+                                    <constraint firstAttribute="bottom" secondItem="s6L-AD-yBt" secondAttribute="bottom" constant="5" id="80u-Yj-saP"/>
+                                    <constraint firstItem="Okl-n9-Fq2" firstAttribute="centerY" secondItem="fIv-SD-MCH" secondAttribute="centerY" id="9ec-3u-IOk"/>
+                                    <constraint firstItem="zgf-RZ-lgH" firstAttribute="centerY" secondItem="fIv-SD-MCH" secondAttribute="centerY" id="MNQ-4R-b1U"/>
+                                    <constraint firstItem="s6L-AD-yBt" firstAttribute="top" secondItem="fIv-SD-MCH" secondAttribute="top" constant="5" id="Ndu-Nf-Oli"/>
+                                    <constraint firstItem="s6L-AD-yBt" firstAttribute="leading" secondItem="fIv-SD-MCH" secondAttribute="leading" constant="15" id="RPe-J9-qTP"/>
+                                    <constraint firstAttribute="height" constant="50" id="UNg-9j-BaU"/>
+                                    <constraint firstAttribute="trailing" secondItem="zgf-RZ-lgH" secondAttribute="trailing" constant="15" id="bdj-tJ-w3F"/>
+                                    <constraint firstItem="s6L-AD-yBt" firstAttribute="centerY" secondItem="fIv-SD-MCH" secondAttribute="centerY" id="ic0-J3-EXy"/>
+                                    <constraint firstItem="geY-Ir-Qc3" firstAttribute="centerY" secondItem="fIv-SD-MCH" secondAttribute="centerY" id="lex-jM-C6y"/>
+                                    <constraint firstItem="Okl-n9-Fq2" firstAttribute="leading" secondItem="geY-Ir-Qc3" secondAttribute="trailing" constant="15" id="t2M-o7-dGb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sXu-aZ-utW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fIv-SD-MCH" firstAttribute="leading" secondItem="sXu-aZ-utW" secondAttribute="leading" id="Jtr-GM-0Kp"/>
+                            <constraint firstItem="fIv-SD-MCH" firstAttribute="trailing" secondItem="sXu-aZ-utW" secondAttribute="trailing" id="Slh-ZR-AXM"/>
+                            <constraint firstItem="fIv-SD-MCH" firstAttribute="top" secondItem="sXu-aZ-utW" secondAttribute="top" id="s0v-k1-WmP"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="UVl-IK-q7a"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Za2-KY-zH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-694" y="444"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Xc7-vr-MX2">
+            <objects>
+                <tabBarController id="g8j-1b-3A5" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XJa-pA-brx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="iM3-Ta-Pbm" kind="relationship" relationship="viewControllers" id="yXq-27-u52"/>
+                        <segue destination="9sE-2L-W5t" kind="relationship" relationship="viewControllers" id="niX-Fj-bKM"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqi-kE-Qq5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-303" y="-337"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="ic_catstagram_logo" width="476" height="96"/>
+        <image name="ic_home_heart" width="512" height="512"/>
+        <image name="ic_home_send" width="512" height="512"/>
+        <image name="ic_home_upload" width="512" height="512"/>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
