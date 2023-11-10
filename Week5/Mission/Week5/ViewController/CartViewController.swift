@@ -14,7 +14,6 @@ class CartViewController: UIViewController {
 
     lazy var storeNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hello World!"
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -115,6 +114,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.priceLabel.text = convertNumberToString(price: totalPrice) + "원"
+        cell.selectionStyle = .none
         
         return cell
     }

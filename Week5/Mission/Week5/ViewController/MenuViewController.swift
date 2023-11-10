@@ -17,7 +17,20 @@ struct SelectedMenu {
     var optionGroups: [OptionGroup]
 }
 
+private enum Metric {
+  static let headerHeight = 250.0
+}
+
 class MenuViewController: UIViewController {
+    private lazy var topImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.imageDownload(url: URL(string: data.menus[0].imageURL ?? "")!, contentMode: UIView.ContentMode.scaleAspectFill , key: data.menus[0].menuTitle)
+        return imageView
+    } ()
+    private var headerHeightConstraint: NSLayoutConstraint?
+    
     var dataForSend : DataForSend = DataForSend(storeName: data.storeName, menus: [])
     
     var selectedMenu: Menu = data.menus[0]
@@ -37,6 +50,8 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        view.addSubview(topImageView)
+        
         for index in selectedMenu.optionGroups.indices {
             if selectedMenu.optionGroups[index].isRequired {
                 selectedMenu.optionGroups[index].options = [selectedMenu.optionGroups[index].options[0]]
@@ -45,7 +60,7 @@ class MenuViewController: UIViewController {
             }
         }
         
-        self.navigationController?.navigationBar.topItem?.title = selectedMenu.menuTitle
+        setAutoLayout()
         
         optionsTableView.delegate = self
         optionsTableView.dataSource = self
@@ -61,6 +76,21 @@ class MenuViewController: UIViewController {
         cartViewController.selectedMenu = self.dataForSend
         cartViewController.delegate = self
         self.navigationController?.pushViewController(cartViewController, animated: true)
+    }
+    
+    func setAutoLayout() {
+        optionsTableView.contentInset = .init(top: Metric.headerHeight, left: 0, bottom: 0, right: 0)
+        optionsTableView.backgroundColor = .clear
+        
+        headerHeightConstraint = topImageView.heightAnchor.constraint(equalToConstant: Metric.headerHeight)
+        headerHeightConstraint?.isActive = true
+        
+        NSLayoutConstraint.activate([
+            topImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            topImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
     }
     
 }
@@ -113,6 +143,36 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let constraint = headerHeightConstraint else {return}
+        
+        let remainingTopSpacing = abs(scrollView.contentOffset.y)
+        let lowerThanTop = scrollView.contentOffset.y < 0 - Double(view.safeAreaInsets.top)
+        let stopExpandHeaderHeight = scrollView.contentOffset.y > -(Metric.headerHeight)
+        
+        if stopExpandHeaderHeight, lowerThanTop {
+            // 1) 초기 상태: UIImageView가 지정한 크기만큼 커졌고, 스크롤뷰의 시작점이 최상단보다 아래 존재
+            optionsTableView.contentInset = .init(top: remainingTopSpacing, left: 0, bottom: 0, right: 0)
+            constraint.constant = remainingTopSpacing
+            topImageView.alpha = remainingTopSpacing / Metric.headerHeight
+            view.layoutIfNeeded()
+
+            self.navigationController?.navigationBar.topItem?.title = selectedMenu.menuTitle
+        } else if !lowerThanTop {
+            // 2) 스크롤 뷰의 시작점이 최상단보다 위에 존재
+            optionsTableView.contentInset = .zero
+            constraint.constant = 0
+            topImageView.alpha = 0
+            self.navigationController?.navigationBar.topItem?.title = selectedMenu.menuTitle
+            
+        } else {
+            // 3) 스크롤 뷰의 시작점이 최상단보다 밑에 있고, 스크롤뷰 상단 contentInset이 미리 지정한 UIImageView 높이인, Metric.headerHeight보다 큰 경우
+            constraint.constant = remainingTopSpacing
+            topImageView.alpha = 1
+            self.navigationController?.navigationBar.topItem?.title = ""
+        }
+    }
 }
 
 extension MenuViewController: OptionTappedDelegate {
@@ -133,15 +193,6 @@ extension MenuViewController: OptionTappedDelegate {
                     optionsTableView.reloadData()
                 }
             }
-        }
-    }
-}
-
-extension UIStackView {
-    func clearSubviews() {
-        self.arrangedSubviews.forEach { view in
-            self.removeArrangedSubview(view) // 부모뷰에서도 자식 뷰를 지워주고
-            view.removeFromSuperview() // 자식 뷰에서도 부모 뷰를 지워준다
         }
     }
 }

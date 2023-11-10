@@ -16,6 +16,7 @@ struct Store {
 struct Menu {
     let menuTitle: String
     let discription: String?
+    let imageURL: String?
     var optionGroups: [OptionGroup]
 }
 
@@ -38,6 +39,7 @@ let data: Store = Store(
         Menu(
             menuTitle: "매운양념(반)",
             discription: nil,
+            imageURL: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9hc3QlMjBjaGlja2VufGVufDB8fDB8fHww",
             optionGroups: [
                 OptionGroup(
                     groupTitle: "가격",
