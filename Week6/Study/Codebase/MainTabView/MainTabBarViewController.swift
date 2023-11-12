@@ -1,0 +1,26 @@
+//
+//  MainTabBarViewController.swift
+//  Codebase
+//
+//  Created by 정재욱 on 11/12/23.
+//
+
+import UIKit
+
+class MainTabBarViewController: UITabBarController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let feedViewController = FeedViewController()
+        let profileViewController = ProfileViewController()
+        
+        self.viewControllers = [feedViewController, profileViewController]
+        
+        let feedTabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
+        let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        
+        feedViewController.tabBarItem = feedTabBarItem
+        profileViewController.tabBarItem = profileTabBarItem
+    }
+}
