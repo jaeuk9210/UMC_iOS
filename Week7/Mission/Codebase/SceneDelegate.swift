@@ -44,24 +44,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabVC = MainTabBarViewController()
         
         checkLoginStatus(loggedIn: {
-            UserApi.shared.me() {(user, error) in
-                if let error = error {
-                    print(error)
-                    self.window?.rootViewController = navVC
-                }
-                else {
-                    print("me() success.")
-                    
-                    //do something
-                    _ = user
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    
-                    appDelegate.userName = user?.kakaoAccount?.profile?.nickname
-                    appDelegate.profileImage = user?.kakaoAccount?.profile?.profileImageUrl
-                    
-                    self.window?.rootViewController = tabVC
-                }
-            }
+            updateUserInfo(after: {
+                self.window?.rootViewController = tabVC
+            })
         }, loggedOut: {
             window?.rootViewController = navVC
         })

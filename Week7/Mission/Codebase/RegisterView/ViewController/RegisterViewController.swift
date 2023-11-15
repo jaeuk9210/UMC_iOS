@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 class RegisterViewController: UIViewController {
     
     //MARK: - Properties
@@ -28,7 +30,6 @@ class RegisterViewController: UIViewController {
     
     private lazy var logoImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "ic_catstagram_logo")
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -36,7 +37,6 @@ class RegisterViewController: UIViewController {
     
     private lazy var welcomeLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "친구들의 사진과 동영상을 보려면\n가입하세요"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textAlignment = .center
@@ -45,7 +45,6 @@ class RegisterViewController: UIViewController {
     
     private lazy var loginWithFacebookButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Facebook으로 로그인", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .facebook
@@ -56,21 +55,18 @@ class RegisterViewController: UIViewController {
     
     private lazy var leftContour: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .lightGray
         return view
     } ()
     
     private lazy var rightContour: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .lightGray
         return view
     } ()
     
     private lazy var orLable: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "또는"
         label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         label.textAlignment = .center
@@ -79,7 +75,6 @@ class RegisterViewController: UIViewController {
     
     private lazy var emailTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
         textField.keyboardType = .emailAddress
         textField.borderStyle = .roundedRect
@@ -89,7 +84,6 @@ class RegisterViewController: UIViewController {
     
     private lazy var nameTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
         textField.borderStyle = .roundedRect
         textField.placeholder = "성명"
@@ -98,7 +92,6 @@ class RegisterViewController: UIViewController {
     
     private lazy var nicknameTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
         textField.borderStyle = .roundedRect
         textField.placeholder = "사용자 이름"
@@ -107,7 +100,6 @@ class RegisterViewController: UIViewController {
     
     private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
         textField.borderStyle = .roundedRect
         textField.placeholder = "비밀번호"
@@ -118,7 +110,6 @@ class RegisterViewController: UIViewController {
     
     private lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("가입", for: .normal)
         button.backgroundColor = .disabledButton
         button.setTitleColor(.white, for: .normal)
@@ -129,14 +120,12 @@ class RegisterViewController: UIViewController {
     
     private lazy var contour: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .lightGray
         return view
     } ()
     
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("계정이 있으신가요? 로그인", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 11)
         button.setTitleColor(.darkGray, for: .normal)
@@ -146,7 +135,6 @@ class RegisterViewController: UIViewController {
     
     private lazy var textFieldStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.alignment = .fill
@@ -232,61 +220,67 @@ class RegisterViewController: UIViewController {
     }
     
     private func setAutoLayout() {
-        NSLayoutConstraint.activate([
-            //Logo image autolayout
-            logoImage.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            logoImage.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.599661),
-            logoImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            logoImage.heightAnchor.constraint(equalTo: logoImage.widthAnchor, multiplier: 3.0/10.0),
-            
-            //Welcome label autolayout
-            welcomeLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            welcomeLabel.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 20),
-            
-            //Login with facebook button autolayout
-            loginWithFacebookButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            loginWithFacebookButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            loginWithFacebookButton.heightAnchor.constraint(equalToConstant: 35),
-            loginWithFacebookButton.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 25),
-            
-            //Or label autolayout
-            orLable.topAnchor.constraint(equalTo: loginWithFacebookButton.bottomAnchor, constant: 35),
-            orLable.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            
-            //left contour autolayout
-            leftContour.heightAnchor.constraint(equalToConstant: 1),
-            leftContour.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            leftContour.trailingAnchor.constraint(equalTo: orLable.leadingAnchor, constant: -15),
-            leftContour.centerYAnchor.constraint(equalTo: orLable.centerYAnchor),
-            
-            //right contour autolayout
-            rightContour.heightAnchor.constraint(equalToConstant: 1),
-            rightContour.leadingAnchor.constraint(equalTo: orLable.trailingAnchor, constant: 15),
-            rightContour.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            rightContour.centerYAnchor.constraint(equalTo: orLable.centerYAnchor),
-            
-            //Text fields autolayout
-            textFieldStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            textFieldStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            textFieldStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            textFieldStackView.topAnchor.constraint(equalTo: orLable.bottomAnchor, constant: 25.33),
-            
-            //Registor button autolayout
-            registerButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            registerButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            registerButton.heightAnchor.constraint(equalToConstant: 45),
-            registerButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 25),
-            
-            //Contour autolayout
-            contour.heightAnchor.constraint(equalToConstant: 1),
-            contour.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            contour.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            contour.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -15),
-            
-            //Login button autolayout
-            loginButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        ])
+        logoImage.snp.makeConstraints {
+            $0.top.centerX.equalTo(view.safeAreaLayoutGuide)
+            $0.width.equalTo(view.safeAreaLayoutGuide.snp.width).multipliedBy(0.599661)
+            $0.height.equalTo(logoImage.snp.width).multipliedBy(0.3)
+        }
+        
+        welcomeLabel.snp.makeConstraints {
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(logoImage.snp.bottom).offset(20)
+        }
+        
+        loginWithFacebookButton.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.height.equalTo(35)
+            $0.top.equalTo(welcomeLabel.snp.bottom).offset(25)
+        }
+        
+        orLable.snp.makeConstraints {
+            $0.top.equalTo(loginWithFacebookButton.snp.bottom).offset(35)
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        leftContour.snp.makeConstraints {
+            $0.height.equalTo(1)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(orLable.snp.leading).offset(-15)
+            $0.centerY.equalTo(orLable)
+        }
+        
+        rightContour.snp.makeConstraints {
+            $0.height.equalTo(1)
+            $0.leading.equalTo(orLable.snp.trailing).offset(15)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.centerY.equalTo(orLable)
+        }
+        
+        textFieldStackView.snp.makeConstraints {
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.top.equalTo(orLable.snp.bottom).offset(25.33)
+        }
+        
+        registerButton.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.height.equalTo(45)
+            $0.top.equalTo(textFieldStackView.snp.bottom).offset(25)
+        }
+        
+        contour.snp.makeConstraints {
+            $0.height.equalTo(1)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.bottom.equalTo(loginButton.snp.top).offset(-15)
+        }
+        
+        loginButton.snp.makeConstraints {
+            $0.centerX.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
     private func validateUserInfo() {

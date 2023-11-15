@@ -7,6 +7,7 @@
 
 import UIKit
 
+import SnapKit
 import KakaoSDKCommon
 import KakaoSDKAuth
 import KakaoSDKUser
@@ -21,7 +22,6 @@ class LoginViewController: UIViewController {
     
     private lazy var logoImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "ic_catstagram_logo")
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
     
     private lazy var emailTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
         textField.keyboardType = .emailAddress
         textField.borderStyle = .roundedRect
@@ -40,7 +39,6 @@ class LoginViewController: UIViewController {
     
     private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.autocapitalizationType = .none
         textField.borderStyle = .roundedRect
         textField.placeholder = "비밀번호"
@@ -52,7 +50,6 @@ class LoginViewController: UIViewController {
     
     private lazy var findPasswordLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "비밀번호를 잊으셨나요?"
         label.font = UIFont.systemFont(ofSize: 11, weight: .bold)
         label.textAlignment = .right
@@ -62,7 +59,6 @@ class LoginViewController: UIViewController {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("로그인", for: .normal)
         button.backgroundColor = .disabledButton
         button.setTitleColor(.white, for: .normal)
@@ -72,21 +68,18 @@ class LoginViewController: UIViewController {
     
     private lazy var leftContour: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .lightGray
         return view
     } ()
     
     private lazy var rightContour: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .lightGray
         return view
     } ()
     
     private lazy var orLable: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "또는"
         label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         label.textAlignment = .center
@@ -94,37 +87,41 @@ class LoginViewController: UIViewController {
     } ()
     
     private lazy var loginWithFaccbookButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.facebook, for: .normal)
-        button.setTitle("Facebook으로 로그인", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        button.setImage(UIImage(systemName: "f.square.fill"), for: .normal)
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(systemName: "f.square.fill")
+        configuration.imagePlacement = .leading
+        configuration.imagePadding = 10
+        configuration.title = "Facebook으로 로그인"
+        configuration.baseForegroundColor = .white
+        configuration.baseBackgroundColor = .facebook
+
+        let button = UIButton(configuration: configuration)
+        
         return button
     } ()
     
     private lazy var loginWithKakaoButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Kakao 계정으로 로그인", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        button.setImage(UIImage(systemName: "k.square.fill"), for: .normal)
-        button.tintColor = .kakaoLable
-        button.backgroundColor = .kakaoBackground
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(systemName: "k.square.fill")
+        configuration.imagePlacement = .leading
+        configuration.imagePadding = 10
+        configuration.title = "Kakao 계정으로 로그인"
+        configuration.baseForegroundColor = .kakaoLable
+        configuration.baseBackgroundColor = .kakaoBackground
+
+        let button = UIButton(configuration: configuration)
         button.addTarget(self, action: #selector(kakaoLoginButtonDidTap(_:)), for: .touchUpInside)
         return button
     } ()
     
     private lazy var contour: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .lightGray
         return view
     } ()
     
     private lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("계정이 없으신가요? 가입하기", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.setTitleColor(.darkGray, for: .normal)
@@ -175,7 +172,6 @@ class LoginViewController: UIViewController {
     }
     
     @objc func kakaoLoginButtonDidTap(_ sender: UIButton) {
-        print("kakao login button did tap")
         if (UserApi.isKakaoTalkLoginAvailable()) {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
@@ -186,26 +182,7 @@ class LoginViewController: UIViewController {
 
                     //do something
                     _ = oauthToken
-                    let mainTabView = MainTabBarViewController()
-                    UserDefaults.standard.set(true, forKey: "loginState")
-                    
-                    UserApi.shared.me() {(user, error) in
-                        if let error = error {
-                            print(error)
-                        }
-                        else {
-                            print("me() success.")
-                            
-                            //do something
-                            _ = user
-                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                            
-                            appDelegate.userName = user?.kakaoAccount?.profile?.nickname
-                            appDelegate.profileImage = user?.kakaoAccount?.profile?.profileImageUrl
-                            
-                            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(mainTabView, animated: true)
-                        }
-                    }
+                    afterLogin()
                 }
             }
         } else {
@@ -218,25 +195,7 @@ class LoginViewController: UIViewController {
                     
                     //do something
                     _ = oauthToken
-                    let mainTabView = MainTabBarViewController()
-                    UserDefaults.standard.set(true, forKey: "loginState")
-                    UserApi.shared.me() {(user, error) in
-                        if let error = error {
-                            print(error)
-                        }
-                        else {
-                            print("me() success.")
-                            
-                            //do something
-                            _ = user
-                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                            
-                            appDelegate.userName = user?.kakaoAccount?.profile?.nickname
-                            appDelegate.profileImage = user?.kakaoAccount?.profile?.profileImageUrl
-                            
-                            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(mainTabView, animated: true)
-                        }
-                    }
+                    afterLogin()
                 }
             }
         }
@@ -266,69 +225,77 @@ class LoginViewController: UIViewController {
     }
     
     private func setAutoLayout() {
-        NSLayoutConstraint.activate([
-            //Logo autolayout
-            logoImage.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            logoImage.bottomAnchor.constraint(equalTo: emailTextField.topAnchor, constant: -32),
-            logoImage.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.641026),
-            logoImage.heightAnchor.constraint(equalTo: logoImage.widthAnchor, multiplier: 3.0/10.0),
-            
-            //Email input autolayout
-            emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            emailTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -10),
-            
-            //Password input autolayout
-            passwordTextField.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            passwordTextField.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            
-            //Find password label autolayout
-            findPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10),
-            findPasswordLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            
-            //Login button autolyout
-            loginButton.topAnchor.constraint(equalTo: findPasswordLabel.bottomAnchor, constant: 40),
-            loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            loginButton.heightAnchor.constraint(equalToConstant: 54),
-            
-            //Or label autolayout
-            orLable.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            orLable.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
-            
-            //Left contour autolayout
-            leftContour.centerYAnchor.constraint(equalTo: orLable.centerYAnchor),
-            leftContour.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            leftContour.trailingAnchor.constraint(equalTo: orLable.leadingAnchor, constant: -15),
-            leftContour.heightAnchor.constraint(equalToConstant: 1),
-            
-            //Right contour autolayout
-            rightContour.centerYAnchor.constraint(equalTo: orLable.centerYAnchor),
-            rightContour.leadingAnchor.constraint(equalTo: orLable.trailingAnchor, constant: 15),
-            rightContour.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            rightContour.heightAnchor.constraint(equalToConstant: 1),
-            
-            //Login with Facebook button autolayout
-            loginWithFaccbookButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            loginWithFaccbookButton.topAnchor.constraint(equalTo: orLable.bottomAnchor, constant: 18),
-            
-            //Bottom contour autolayout
-            contour.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            contour.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            contour.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            contour.bottomAnchor.constraint(equalTo: registerButton.topAnchor, constant: -15),
-            contour.heightAnchor.constraint(equalToConstant: 1),
-            
-            //Register button autolayout
-            registerButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            registerButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
-            //Kakao login button autolayout
-            loginWithKakaoButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            loginWithKakaoButton.topAnchor.constraint(equalTo: loginWithFaccbookButton.bottomAnchor, constant: 10)
-        ])
+        logoImage.snp.makeConstraints {
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(emailTextField.snp.top).offset(-32)
+            $0.width.equalTo(view.safeAreaLayoutGuide).multipliedBy(0.641026)
+            $0.height.equalTo(logoImage.snp.width).multipliedBy(0.3)
+        }
+        
+        emailTextField.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.bottom.equalTo(passwordTextField.snp.top).offset(-10)
+        }
+        
+        passwordTextField.snp.makeConstraints {
+            $0.center.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+        }
+        
+        findPasswordLabel.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+        }
+        
+        loginButton.snp.makeConstraints {
+            $0.top.equalTo(findPasswordLabel.snp.bottom).offset(40)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.height.equalTo(54)
+        }
+        
+        orLable.snp.makeConstraints {
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(loginButton.snp.bottom).offset(30)
+        }
+        
+        leftContour.snp.makeConstraints {
+            $0.height.equalTo(1)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(orLable.snp.leading).offset(-15)
+            $0.centerY.equalTo(orLable)
+        }
+        
+        rightContour.snp.makeConstraints {
+            $0.height.equalTo(1)
+            $0.leading.equalTo(orLable.snp.trailing).offset(15)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.centerY.equalTo(orLable)
+        }
+        
+        loginWithFaccbookButton.snp.makeConstraints {
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(orLable.snp.bottom).offset(10)
+        }
+        
+        contour.snp.makeConstraints {
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-10)
+            $0.bottom.equalTo(registerButton.snp.top).offset(-15)
+            $0.height.equalTo(1)
+        }
+        
+        registerButton.snp.makeConstraints {
+            $0.centerX.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        loginWithKakaoButton.snp.makeConstraints {
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(loginWithFaccbookButton.snp.bottom).offset(10)
+        }
     }
 }
 

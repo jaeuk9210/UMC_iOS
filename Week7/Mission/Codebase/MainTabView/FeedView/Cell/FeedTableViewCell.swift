@@ -7,13 +7,14 @@
 
 import UIKit
 
+import SnapKit
+
 class FeedTableViewCell: UITableViewCell {
     //MARK: - Properties
     static let identifier = "FeedTableViewCell"
     
     private lazy var userProfileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "person.fill")
         imageView.backgroundColor = .systemGray3
         imageView.layer.cornerRadius = 12.5
@@ -24,7 +25,6 @@ class FeedTableViewCell: UITableViewCell {
     
     private lazy var userNameLable: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 10, weight: .bold)
         label.text = "Uno"
         return label
@@ -32,20 +32,17 @@ class FeedTableViewCell: UITableViewCell {
     
     private lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ic_home_more"), for: .normal)
         return button
     } ()
     
     private lazy var feedImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     } ()
     
     private lazy var likeButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ic_home_heart"), for: .normal)
         button.setImage(UIImage(named: "ic_home_heart_full"), for: .selected)
         button.addTarget(self, action: #selector(actionIsHeart(_:)), for: .touchUpInside)
@@ -54,21 +51,18 @@ class FeedTableViewCell: UITableViewCell {
     
     private lazy var messageButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ic_home_comment"), for: .normal)
         return button
     } ()
     
     private lazy var shareButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ic_home_send"), for: .normal)
         return button
     } ()
     
     private lazy var bookmarkButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ic_bookmark_white"), for: .normal)
         button.setImage(UIImage(named: "ic_bookmark_black"), for: .selected)
         button.addTarget(self, action: #selector(actionBookmark(_:)), for: .touchUpInside)
@@ -77,7 +71,6 @@ class FeedTableViewCell: UITableViewCell {
     
     private lazy var likeCountLable: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         label.text = "좋아요 4개"
         return label
@@ -85,7 +78,6 @@ class FeedTableViewCell: UITableViewCell {
     
     private lazy var feedLable: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 8)
         label.text = "uno test\ntest"
         label.numberOfLines = 2
@@ -94,7 +86,6 @@ class FeedTableViewCell: UITableViewCell {
     
     private lazy var myProfileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "person.fill")
         imageView.backgroundColor = .systemGray3
         imageView.layer.cornerRadius = 12.5
@@ -105,7 +96,6 @@ class FeedTableViewCell: UITableViewCell {
     
     private lazy var commentTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.placeholder = "댓글달기..."
         return textField
@@ -141,63 +131,76 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     private func setAutoLayout() {
-        NSLayoutConstraint.activate([
-            userProfileImageView.heightAnchor.constraint(equalToConstant: 25),
-            userProfileImageView.widthAnchor.constraint(equalToConstant: 25),
-            userProfileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            userProfileImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            
-            userNameLable.centerYAnchor.constraint(equalTo: userProfileImageView.centerYAnchor),
-            userNameLable.leadingAnchor.constraint(equalTo: userProfileImageView.trailingAnchor, constant: 10),
-            
-            moreButton.heightAnchor.constraint(equalToConstant: 17),
-            moreButton.widthAnchor.constraint(equalToConstant: 17),
-            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            moreButton.centerYAnchor.constraint(equalTo: userProfileImageView.centerYAnchor),
-            
-            feedImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            feedImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            feedImageView.heightAnchor.constraint(equalTo: feedImageView.widthAnchor),
-            feedImageView.topAnchor.constraint(equalTo: moreButton.bottomAnchor, constant: 10),
-            
-            likeButton.heightAnchor.constraint(equalToConstant: 17),
-            likeButton.widthAnchor.constraint(equalToConstant: 17),
-            likeButton.topAnchor.constraint(equalTo: feedImageView.bottomAnchor, constant: 10),
-            likeButton.leadingAnchor.constraint(equalTo: userProfileImageView.leadingAnchor),
-            
-            messageButton.heightAnchor.constraint(equalToConstant: 20),
-            messageButton.widthAnchor.constraint(equalToConstant: 20),
-            messageButton.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor),
-            messageButton.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor, constant: 13),
-            
-            shareButton.heightAnchor.constraint(equalToConstant: 17),
-            shareButton.widthAnchor.constraint(equalToConstant: 17),
-            shareButton.centerYAnchor.constraint(equalTo: messageButton.centerYAnchor),
-            shareButton.leadingAnchor.constraint(equalTo: messageButton.trailingAnchor, constant: 13),
-            
-            bookmarkButton.heightAnchor.constraint(equalToConstant: 17),
-            bookmarkButton.widthAnchor.constraint(equalToConstant: 17),
-            bookmarkButton.centerYAnchor.constraint(equalTo: shareButton.centerYAnchor),
-            bookmarkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            
-            likeCountLable.leadingAnchor.constraint(equalTo: likeButton.leadingAnchor),
-            likeCountLable.topAnchor.constraint(equalTo: shareButton.bottomAnchor, constant: 10),
-            
-            feedLable.leadingAnchor.constraint(equalTo: likeCountLable.leadingAnchor),
-            feedLable.trailingAnchor.constraint(equalTo: bookmarkButton.trailingAnchor),
-            feedLable.topAnchor.constraint(equalTo: likeCountLable.bottomAnchor, constant: 10),
-            
-            myProfileImageView.heightAnchor.constraint(equalToConstant: 25),
-            myProfileImageView.widthAnchor.constraint(equalToConstant: 25),
-            myProfileImageView.leadingAnchor.constraint(equalTo: userProfileImageView.leadingAnchor),
-            myProfileImageView.topAnchor.constraint(equalTo: feedLable.bottomAnchor, constant: 13),
-            myProfileImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -13),
-            
-            commentTextField.trailingAnchor.constraint(equalTo: bookmarkButton.trailingAnchor),
-            commentTextField.leadingAnchor.constraint(equalTo: myProfileImageView.trailingAnchor, constant: 7),
-            commentTextField.centerYAnchor.constraint(equalTo: myProfileImageView.centerYAnchor),
-            commentTextField.heightAnchor.constraint(equalTo: myProfileImageView.heightAnchor, multiplier: 1.36)
-        ])
+        userProfileImageView.snp.makeConstraints {
+            $0.height.width.equalTo(25)
+            $0.leading.top.equalTo(contentView).offset(10)
+        }
+        
+        userNameLable.snp.makeConstraints {
+            $0.centerY.equalTo(userProfileImageView)
+            $0.leading.equalTo(userProfileImageView.snp.trailing).offset(10)
+        }
+        
+        moreButton.snp.makeConstraints {
+            $0.height.width.equalTo(17)
+            $0.trailing.equalTo(contentView).offset(-10)
+            $0.centerY.equalTo(userProfileImageView)
+        }
+        
+        feedImageView.snp.makeConstraints {
+            $0.leading.trailing.equalTo(contentView)
+            $0.height.equalTo(feedImageView.snp.width)
+            $0.top.equalTo(moreButton.snp.bottom).offset(10)
+        }
+        
+        likeButton.snp.makeConstraints {
+            $0.height.width.equalTo(17)
+            $0.top.equalTo(feedImageView.snp.bottom).offset(10)
+            $0.leading.equalTo(userProfileImageView)
+        }
+        
+        messageButton.snp.makeConstraints {
+            $0.height.width.equalTo(20)
+            $0.centerY.equalTo(likeButton)
+            $0.leading.equalTo(likeButton.snp.trailing).offset(13)
+        }
+        
+        shareButton.snp.makeConstraints {
+            $0.height.width.equalTo(17)
+            $0.centerY.equalTo(messageButton)
+            $0.leading.equalTo(messageButton.snp.trailing).offset(13)
+        }
+        
+        bookmarkButton.snp.makeConstraints {
+            $0.height.width.equalTo(17)
+            $0.centerY.equalTo(shareButton)
+            $0.trailing.equalTo(contentView).offset(-10)
+        }
+        
+        likeCountLable.snp.makeConstraints {
+            $0.leading.equalTo(likeButton)
+            $0.top.equalTo(shareButton.snp.bottom).offset(10)
+        }
+        
+        feedLable.snp.makeConstraints {
+            $0.leading.equalTo(likeCountLable)
+            $0.trailing.equalTo(bookmarkButton)
+            $0.top.equalTo(likeCountLable.snp.bottom).offset(10)
+        }
+        
+        myProfileImageView.snp.makeConstraints {
+            $0.height.width.equalTo(25)
+            $0.leading.equalTo(userProfileImageView)
+            $0.top.equalTo(feedLable.snp.bottom).offset(13)
+            $0.bottom.equalTo(contentView).offset(-13)
+        }
+        
+        commentTextField.snp.makeConstraints {
+            $0.trailing.equalTo(bookmarkButton)
+            $0.leading.equalTo(myProfileImageView.snp.trailing).offset(7)
+            $0.centerY.equalTo(myProfileImageView)
+            $0.height.equalTo(myProfileImageView).multipliedBy(1.36)
+        }
     }
     
     //MARK: - Inits

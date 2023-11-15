@@ -7,6 +7,7 @@
 
 import UIKit
 
+import SnapKit
 import KakaoSDKUser
 
 class ProfileViewController: UIViewController {
@@ -43,7 +44,6 @@ class ProfileViewController: UIViewController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.estimatedItemSize = .zero
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 1)
         return collectionView
     } ()
@@ -84,12 +84,9 @@ class ProfileViewController: UIViewController {
     }
     
     private func setAutoLayout() {
-        NSLayoutConstraint.activate([
-            profileCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            profileCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            profileCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-        ])
+        profileCollectionView.snp.makeConstraints {
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
     private func setupCollectionView() {

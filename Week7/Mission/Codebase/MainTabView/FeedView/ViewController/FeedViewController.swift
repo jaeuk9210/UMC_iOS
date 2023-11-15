@@ -7,18 +7,18 @@
 
 import UIKit
 
+import SnapKit
+
 class FeedViewController: UIViewController {
     
     //MARK: - Properties
     private lazy var navigationView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     } ()
 
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "ic_catstagram_logo")
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -26,28 +26,24 @@ class FeedViewController: UIViewController {
     
     private lazy var postButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ic_home_upload"), for: .normal)
         return button
     } ()
     
     private lazy var notiButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ic_home_heart"), for: .normal)
         return button
     } ()
     
     private lazy var directMessageButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ic_home_send"), for: .normal)
         return button
     } ()
     
     private lazy var feedTableView: UITableView = {
         let tableView = UITableView(frame: view.bounds, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     } ()
     
@@ -81,44 +77,41 @@ class FeedViewController: UIViewController {
     }
     
     private func setAutoLayout() {
-        NSLayoutConstraint.activate([
-            //Navigation bar view autolayout
-            navigationView.heightAnchor.constraint(equalToConstant: 50),
-            navigationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            navigationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            navigationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            
-            //Logo image autolayout
-            logoImageView.widthAnchor.constraint(equalToConstant: 140),
-            logoImageView.leadingAnchor.constraint(equalTo: logoImageView.superview!.leadingAnchor, constant: 15),
-            logoImageView.topAnchor.constraint(equalTo: logoImageView.superview!.topAnchor, constant: 5),
-            logoImageView.bottomAnchor.constraint(equalTo: logoImageView.superview!.bottomAnchor, constant: -5),
-            logoImageView.centerYAnchor.constraint(equalTo: logoImageView.superview!.centerYAnchor),
-            
-            //Post button autolayout
-            postButton.widthAnchor.constraint(equalToConstant: 25),
-            postButton.heightAnchor.constraint(equalToConstant: 25),
-            postButton.centerYAnchor.constraint(equalTo: postButton.superview!.centerYAnchor),
-            postButton.trailingAnchor.constraint(equalTo: notiButton.leadingAnchor, constant: -15),
-            
-            //Like button autolayout
-            notiButton.widthAnchor.constraint(equalToConstant: 27),
-            notiButton.heightAnchor.constraint(equalToConstant: 27),
-            notiButton.centerYAnchor.constraint(equalTo: notiButton.superview!.centerYAnchor),
-            notiButton.trailingAnchor.constraint(equalTo: directMessageButton.leadingAnchor, constant: -15),
-            
-            //Direct message button autolayout
-            directMessageButton.widthAnchor.constraint(equalToConstant: 25),
-            directMessageButton.heightAnchor.constraint(equalToConstant: 25),
-            directMessageButton.centerYAnchor.constraint(equalTo: directMessageButton.superview!.centerYAnchor),
-            directMessageButton.trailingAnchor.constraint(equalTo: directMessageButton.superview!.trailingAnchor, constant: -15),
-            
-            //Feed table view autolayout
-            feedTableView.topAnchor.constraint(equalTo: navigationView.bottomAnchor),
-            feedTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            feedTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            feedTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-        ])
+        navigationView.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        logoImageView.snp.makeConstraints {
+            $0.width.equalTo(140)
+            $0.leading.equalToSuperview().offset(15)
+            $0.top.equalToSuperview().offset(5)
+            $0.bottom.equalToSuperview().offset(-5)
+            $0.centerY.equalToSuperview()
+        }
+        
+        postButton.snp.makeConstraints {
+            $0.height.width.equalTo(25)
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalTo(notiButton.snp.leading).offset(-15)
+        }
+        
+        notiButton.snp.makeConstraints {
+            $0.height.width.equalTo(27)
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalTo(directMessageButton.snp.leading).offset(-15)
+        }
+        
+        directMessageButton.snp.makeConstraints {
+            $0.height.width.equalTo(25)
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-15)
+        }
+        
+        feedTableView.snp.makeConstraints {
+            $0.top.equalTo(navigationView.snp.bottom)
+            $0.bottom.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
 

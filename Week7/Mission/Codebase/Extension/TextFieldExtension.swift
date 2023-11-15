@@ -17,12 +17,11 @@ extension UITextField {
     }
     
     func enablePasswordToggle(){
-        let button = UIButton(type: .custom)
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: -16, bottom: 0, trailing: 0)
+        let button = UIButton(configuration: configuration)
         setPasswordToggleImage(button)
-//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
-        button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: -16, bottom: 0, trailing: 0)
-        button.frame = CGRect(x: CGFloat(self.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
-        button.clipsToBounds = true
+        button.frame = CGRect(x: CGFloat(self.frame.size.width + 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
         button.addTarget(self, action: #selector(self.togglePasswordView), for: .touchUpInside)
         button.tintColor = .lightGray
         self.rightView = button

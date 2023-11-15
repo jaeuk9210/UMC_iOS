@@ -43,3 +43,31 @@ func updateLoginStatus() {
         UserDefaults.standard.set(false, forKey: "loginState")
     }
 }
+
+func updateUserInfo(after: @escaping () -> ()) {
+    UserApi.shared.me() {(user, error) in
+        if let error = error {
+            print(error)
+        }
+        else {
+            print("me() success.")
+            
+            //do something
+            _ = user
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            appDelegate.userName = user?.kakaoAccount?.profile?.nickname
+            appDelegate.profileImage = user?.kakaoAccount?.profile?.profileImageUrl
+            
+            after()
+        }
+    }
+}
+
+func afterLogin() {
+    let mainTabView = MainTabBarViewController()
+    UserDefaults.standard.set(true, forKey: "loginState")
+    updateUserInfo(after: {
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(mainTabView, animated: true)
+    })
+}

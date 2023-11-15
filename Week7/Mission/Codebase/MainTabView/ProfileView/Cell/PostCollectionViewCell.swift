@@ -7,13 +7,14 @@
 
 import UIKit
 
+import SnapKit
+
 class PostCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     static let identifier = "PostCollectionViewCell"
     
     private lazy var postImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .systemIndigo
         return imageView
     } ()
@@ -42,12 +43,9 @@ class PostCollectionViewCell: UICollectionViewCell {
     }
 
     private func setAutoLayout() {
-        NSLayoutConstraint.activate([
-            postImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            postImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            postImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-        ])
+        postImageView.snp.makeConstraints{
+            $0.edges.equalTo(contentView)
+        }
     }
     
     public func setupData() {

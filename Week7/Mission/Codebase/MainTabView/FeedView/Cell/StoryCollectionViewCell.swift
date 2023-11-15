@@ -7,12 +7,13 @@
 
 import UIKit
 
+import SnapKit
+
 class StoryCollectionViewCell: UICollectionViewCell {
     static let identifier = "StoryCollectionViewCell"
     
     private lazy var imageViewBackgroundView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 24
         view.backgroundColor = .systemGray3
         view.clipsToBounds = true
@@ -21,7 +22,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
     
     private lazy var userProfileBackgroundView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 23.5
         view.backgroundColor = .white
         view.clipsToBounds = true
@@ -30,7 +30,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
     
     private lazy var userProfileImageVIew: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 22.5
         imageView.clipsToBounds = true
         imageView.image = UIImage(systemName: "person.fill")
@@ -41,7 +40,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
     
     private lazy var userNmaeLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Jino"
         label.font = UIFont.systemFont(ofSize: 9, weight: .bold)
         return label
@@ -60,25 +58,25 @@ class StoryCollectionViewCell: UICollectionViewCell {
     }
     
     func setAutoLayout() {
-        NSLayoutConstraint.activate([
-            imageViewBackgroundView.heightAnchor.constraint(equalToConstant: 48),
-            imageViewBackgroundView.widthAnchor.constraint(equalToConstant: 48),
-            imageViewBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageViewBackgroundView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            
-            userProfileBackgroundView.heightAnchor.constraint(equalToConstant: 47),
-            userProfileBackgroundView.widthAnchor.constraint(equalToConstant: 47),
-            userProfileBackgroundView.centerYAnchor.constraint(equalTo: imageViewBackgroundView.centerYAnchor),
-            userProfileBackgroundView.centerXAnchor.constraint(equalTo: imageViewBackgroundView.centerXAnchor),
-            
-            userProfileImageVIew.heightAnchor.constraint(equalToConstant: 45),
-            userProfileImageVIew.widthAnchor.constraint(equalToConstant: 45),
-            userProfileImageVIew.centerYAnchor.constraint(equalTo: userProfileBackgroundView.centerYAnchor),
-            userProfileImageVIew.centerXAnchor.constraint(equalTo: userProfileBackgroundView.centerXAnchor),
-            
-            userNmaeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            userNmaeLabel.topAnchor.constraint(equalTo: imageViewBackgroundView.bottomAnchor, constant: 2)
-        ])
+        imageViewBackgroundView.snp.makeConstraints {
+            $0.height.width.equalTo(48)
+            $0.top.centerX.equalTo(contentView)
+        }
+        
+        userProfileBackgroundView.snp.makeConstraints {
+            $0.height.width.equalTo(47)
+            $0.center.equalTo(imageViewBackgroundView)
+        }
+        
+        userProfileImageVIew.snp.makeConstraints {
+            $0.height.width.equalTo(45)
+            $0.center.equalTo(userProfileBackgroundView)
+        }
+        
+        userNmaeLabel.snp.makeConstraints {
+            $0.centerX.equalTo(contentView)
+            $0.top.equalTo(imageViewBackgroundView.snp.bottom).offset(2)
+        }
     }
     
     override init(frame: CGRect) {

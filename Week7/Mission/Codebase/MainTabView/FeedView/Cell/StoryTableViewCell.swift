@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 class StoryTableViewCell: UITableViewCell {
     //MARK: - Properties
     static let identifier = "StoryTableViewCell"
@@ -17,7 +19,6 @@ class StoryTableViewCell: UITableViewCell {
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         flowLayout.minimumLineSpacing = 12
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.showsHorizontalScrollIndicator = false
         return view
     } ()
@@ -35,12 +36,9 @@ class StoryTableViewCell: UITableViewCell {
     }
     
     func setAutoLayout() {
-        NSLayoutConstraint.activate([
-            storyCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            storyCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            storyCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            storyCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
+        storyCollectionView.snp.makeConstraints {
+            $0.edges.equalTo(contentView)
+        }
     }
     
     func setCollectionViewDataSourceDelegate(dataSourceDelegate: UICollectionViewDelegate & UICollectionViewDataSource, forRow row: Int) {
