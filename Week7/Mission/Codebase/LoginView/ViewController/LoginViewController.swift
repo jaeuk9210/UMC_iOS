@@ -210,35 +210,35 @@ class LoginViewController: UIViewController {
             }
         } else {
             UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-                    if let error = error {
-                        print(error)
-                    }
-                    else {
-                        print("loginWithKakaoAccount() success.")
-
-                        //do something
-                        _ = oauthToken
-                        let mainTabView = MainTabBarViewController()
-                        UserDefaults.standard.set(true, forKey: "loginState")
-                        UserApi.shared.me() {(user, error) in
-                            if let error = error {
-                                print(error)
-                            }
-                            else {
-                                print("me() success.")
-                                
-                                //do something
-                                _ = user
-                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                                
-                                appDelegate.userName = user?.kakaoAccount?.profile?.nickname
-                                appDelegate.profileImage = user?.kakaoAccount?.profile?.profileImageUrl
-                                
-                                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(mainTabView, animated: true)
-                            }
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoAccount() success.")
+                    
+                    //do something
+                    _ = oauthToken
+                    let mainTabView = MainTabBarViewController()
+                    UserDefaults.standard.set(true, forKey: "loginState")
+                    UserApi.shared.me() {(user, error) in
+                        if let error = error {
+                            print(error)
+                        }
+                        else {
+                            print("me() success.")
+                            
+                            //do something
+                            _ = user
+                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                            
+                            appDelegate.userName = user?.kakaoAccount?.profile?.nickname
+                            appDelegate.profileImage = user?.kakaoAccount?.profile?.profileImageUrl
+                            
+                            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(mainTabView, animated: true)
                         }
                     }
                 }
+            }
         }
     }
     
