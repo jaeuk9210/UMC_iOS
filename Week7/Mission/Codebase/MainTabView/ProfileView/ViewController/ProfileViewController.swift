@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 import KakaoSDKUser
@@ -14,10 +15,16 @@ class ProfileViewController: UIViewController {
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    var subscriptions = Set<AnyCancellable>()
+    
+    private lazy var kakaoAuthViewModel: KakaoAuthViewModel = {
+        KakaoAuthViewModel()
+    } ()
+    
     //MARK: - Properties
     private lazy var nickName: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem()
-        barButtonItem.title = appDelegate.userName
+        barButtonItem.title = ""
         barButtonItem.tintColor = .black
         barButtonItem.target = self
         return barButtonItem
@@ -57,22 +64,16 @@ class ProfileViewController: UIViewController {
         addViews()
         setAutoLayout()
         setupCollectionView()
+        
+        kakaoAuthViewModel.getUserInfo()
+        setBinding() 
     }
     
     //MARK: - Actions
     
     @objc
     func moreButtonDidTap(_ sender: UIButton) {
-        UserApi.shared.logout {(error) in
-            if let error = error {
-                print(error)
-            }
-            else {
-                let loginVC = LoginViewController()
-                UserDefaults.standard.set(false, forKey: "loginState")
-                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(loginVC, animated: true)
-            }
-        }
+        kakaoAuthViewModel.kakaoLogout()
     }
     
     //MARK: - Helpers
@@ -96,6 +97,13 @@ class ProfileViewController: UIViewController {
         profileCollectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: ProfileCollectionViewCell.identifier)
         profileCollectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.identifier)
     }
+    
+    fileprivate func setBinding() {
+        self.kakaoAuthViewModel.username
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.title, on: self.nickName)
+            .store(in: &subscriptions)
+    }
 }
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -117,7 +125,10 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         switch section {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.identifier, for: indexPath) as! ProfileCollectionViewCell
-            cell.profileImage.imageDownload(url: appDelegate.profileImage, contentMode: .scaleAspectFill, key: appDelegate.profileImage?.absoluteString)
+            self.kakaoAuthViewModel.profileImageURL
+                .receive(on: DispatchQueue.main)
+                .assign(to: \.profileImage, on: cell)
+                .store(in: &subscriptions)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCollectionViewCell.identifier, for: indexPath) as! PostCollectionViewCell

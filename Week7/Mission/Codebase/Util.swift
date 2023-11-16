@@ -54,11 +54,6 @@ func updateUserInfo(after: @escaping () -> ()) {
             
             //do something
             _ = user
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            
-            appDelegate.userName = user?.kakaoAccount?.profile?.nickname
-            appDelegate.profileImage = user?.kakaoAccount?.profile?.profileImageUrl
-            
             after()
         }
     }

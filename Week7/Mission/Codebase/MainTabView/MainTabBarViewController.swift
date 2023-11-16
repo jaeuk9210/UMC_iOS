@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 import KakaoSDKUser
 
@@ -28,5 +29,6 @@ class MainTabBarViewController: UITabBarController {
         
         feedViewController.tabBarItem = feedTabBarItem
         profileViewController.tabBarItem = profileTabBarItem
+        
     }
 }

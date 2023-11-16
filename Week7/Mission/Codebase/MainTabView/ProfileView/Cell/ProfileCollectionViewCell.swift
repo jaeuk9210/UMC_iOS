@@ -14,7 +14,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     static let identifier = "ProfileCollectionViewCell"
     
-    lazy var profileImage: UIImageView = {
+    lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .green
         imageView.layer.cornerRadius = 44
@@ -150,7 +150,13 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     } ()
     
     private var myProfileInfo: [UIView] {
-        [profileImage, addStoryImage, inviteButton, profileEditButton, userNameLabel, profileInfoStackView]
+        [profileImageView, addStoryImage, inviteButton, profileEditButton, userNameLabel, profileInfoStackView]
+    }
+    
+    var profileImage: URL? = URL(string: "") {
+        didSet {
+            profileImageView.imageDownload(url: profileImage,contentMode: .scaleAspectFill, key: profileImage?.absoluteString)
+        }
     }
     
     //MARK: - Inits
@@ -183,15 +189,15 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     }
     
     private func setAutoLayout() {
-        profileImage.snp.makeConstraints {
+        profileImageView.snp.makeConstraints {
             $0.height.width.equalTo(88)
             $0.top.leading.equalTo(contentView).offset(10)
         }
         
         addStoryImage.snp.makeConstraints {
             $0.height.width.equalTo(24)
-            $0.trailing.equalTo(profileImage)
-            $0.bottom.equalTo(profileImage.snp.bottom).offset(0.3)
+            $0.trailing.equalTo(profileImageView)
+            $0.bottom.equalTo(profileImageView.snp.bottom).offset(0.3)
         }
         
         inviteButton.snp.makeConstraints{
@@ -200,19 +206,19 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         }
         
         profileEditButton.snp.makeConstraints{
-            $0.leading.equalTo(profileImage)
+            $0.leading.equalTo(profileImageView)
             $0.trailing.equalTo(inviteButton.snp.leading).offset(-10)
             $0.height.centerY.equalTo(inviteButton)
         }
         
         userNameLabel.snp.makeConstraints{
-            $0.centerX.equalTo(profileImage)
-            $0.top.equalTo(profileImage.snp.bottom)
+            $0.centerX.equalTo(profileImageView)
+            $0.top.equalTo(profileImageView.snp.bottom)
         }
         
         profileInfoStackView.snp.makeConstraints{
             $0.trailing.equalTo(profileEditButton)
-            $0.centerY.equalTo(profileImage)
+            $0.centerY.equalTo(profileImageView)
         }
     }
 }

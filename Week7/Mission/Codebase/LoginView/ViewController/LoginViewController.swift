@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 import KakaoSDKCommon
@@ -19,6 +20,12 @@ class LoginViewController: UIViewController {
     var password = String()
     
     var userInfo: UserInfo?
+    
+    var subscriptions = Set<AnyCancellable>()
+    
+    private lazy var kakaoAuthViewModel: KakaoAuthViewModel = {
+        KakaoAuthViewModel()
+    } ()
     
     private lazy var logoImage: UIImageView = {
         let imageView = UIImageView()
@@ -140,6 +147,7 @@ class LoginViewController: UIViewController {
         setAutoLayout()
         
         setupAttribute()
+        setBinding()
     }
     
     //MARK: - Action
@@ -172,33 +180,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func kakaoLoginButtonDidTap(_ sender: UIButton) {
-        if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("loginWithKakaoTalk() success.")
-
-                    //do something
-                    _ = oauthToken
-                    afterLogin()
-                }
-            }
-        } else {
-            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    print("loginWithKakaoAccount() success.")
-                    
-                    //do something
-                    _ = oauthToken
-                    afterLogin()
-                }
-            }
-        }
+        kakaoAuthViewModel.kakaoLogin()
     }
     
     //MARK: - Helpers
@@ -307,4 +289,17 @@ extension LoginViewController: SendData{
 
 protocol SendData {
     func send(userInfo: UserInfo)
+}
+
+extension LoginViewController {
+    fileprivate func setBinding() {
+        self.kakaoAuthViewModel.$isLoggedIn.sink { [weak self] isLoggedIn in
+            guard self != nil else { return }
+            if isLoggedIn {
+                let tabVC = MainTabBarViewController()
+                UserDefaults.standard.set(true, forKey: "loginState")
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(tabVC, animated: true)
+            }
+        }.store(in: &subscriptions)
+    }
 }

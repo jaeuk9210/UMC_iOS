@@ -14,9 +14,6 @@ import KakaoSDKAuth
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var userName: String?
-    var profileImage: URL?
-    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if (AuthApi.isKakaoTalkLoginUrl(url)) {
                     return AuthController.handleOpenUrl(url: url)
