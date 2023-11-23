@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  Codebase
+//
+//  Created by 정재욱 on 11/15/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+KAKAO_APP_KEY = bda1c9c3dddcc97ab02dcd56bba036cd
