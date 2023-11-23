@@ -1,3 +1,6 @@
+.DS_Store
+*.xcconfig
+
 # Created by https://www.toptal.com/developers/gitignore/api/xcode,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=xcode,node
 
