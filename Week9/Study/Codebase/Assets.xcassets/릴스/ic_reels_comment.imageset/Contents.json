@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_reels_comment.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
